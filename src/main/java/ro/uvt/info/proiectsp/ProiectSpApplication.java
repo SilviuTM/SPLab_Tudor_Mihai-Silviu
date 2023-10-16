@@ -1,13 +1,13 @@
-package ro.uvt.info.sabloaneproiectare;
+package ro.uvt.info.proiectsp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SabloaneProiectareApplication {
+public class ProiectSpApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SabloaneProiectareApplication.class, args);
+        SpringApplication.run(ProiectSpApplication.class, args);
     }
 
 }

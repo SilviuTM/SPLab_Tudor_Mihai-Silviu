@@ -1,10 +1,10 @@
-package ro.uvt.info.sabloaneproiectare;
+package ro.uvt.info.proiectsp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SabloaneProiectareApplicationTests {
+class ProiectSpApplicationTests {
 
     @Test
     void contextLoads() {
