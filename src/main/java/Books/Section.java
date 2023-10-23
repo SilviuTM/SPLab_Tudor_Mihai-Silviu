@@ -13,6 +13,11 @@ public class Section extends Element {
         title = _title;
     }
 
+    public Section(Section other) {
+        super(other);
+        title = other.title;
+    }
+
     public String GetTitle() {
         return title;
     }
@@ -29,12 +34,16 @@ public class Section extends Element {
     }
 
     public void add(Element e) {
-        elements.add(e);
+        elements.add(e.clone());
     }
     public void remove(Element e) {
         elements.remove(e);
     }
     public Element get(int i) {
         return elements.get(i);
+    }
+
+    public Section clone() {
+        return new Section(this);
     }
 }

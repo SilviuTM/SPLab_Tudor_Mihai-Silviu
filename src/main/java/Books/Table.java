@@ -11,6 +11,11 @@ public class Table extends Element {
         title = _title;
     }
 
+    public Table(Table other) {
+        super();
+        title = other.title;
+    }
+
     public String GetTitle() {
         return title;
     }
@@ -21,5 +26,9 @@ public class Table extends Element {
 
     public void print() {
         System.out.println("Table: " + title);
+    }
+
+    public Table clone() {
+        return new Table(this);
     }
 }

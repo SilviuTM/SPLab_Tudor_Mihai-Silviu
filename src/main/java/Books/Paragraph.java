@@ -11,6 +11,11 @@ public class Paragraph extends Element {
         text = _text;
     }
 
+    public Paragraph(Paragraph other) {
+        super(other);
+        text = other.text;
+    }
+
     public String GetText() {
         return text;
     }
@@ -21,5 +26,9 @@ public class Paragraph extends Element {
 
     public void print() {
         System.out.println("Paragraph: " + text);
+    }
+
+    public Paragraph clone() {
+        return new Paragraph(this);
     }
 }

@@ -10,8 +10,14 @@ public abstract class Element {
         elements = new ArrayList<>();
     }
 
+    public Element(Element other) {
+        elements = new ArrayList<>(other.elements);
+    }
+
     public abstract void print();
     public void add(Element e) { }
     public void remove(Element e) { }
     public Element get(int i) { return null; }
+
+    public abstract Element clone();
 }

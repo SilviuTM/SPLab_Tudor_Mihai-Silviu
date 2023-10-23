@@ -11,6 +11,11 @@ public class Image extends Element {
         imageName = _imageName;
     }
 
+    public Image(Image other) {
+        super(other);
+        imageName = other.imageName;
+    }
+
     public String GetImageName() {
         return imageName;
     }
@@ -21,5 +26,9 @@ public class Image extends Element {
 
     public void print() {
         System.out.println("Image: " + imageName);
+    }
+
+    public Image clone() {
+        return new Image(this);
     }
 }
