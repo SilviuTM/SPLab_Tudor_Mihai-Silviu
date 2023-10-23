@@ -1,6 +1,6 @@
 package Books;
 
-public class Paragraph implements Element {
+public class Paragraph extends Element {
     String text;
 
     public Paragraph() {

@@ -1,6 +1,6 @@
 package Books;
 
-public class Table implements Element {
+public class Table extends Element {
     String title;
 
     public Table() {

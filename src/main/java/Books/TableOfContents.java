@@ -1,6 +1,6 @@
 package Books;
 
-public class TableOfContents {
+public class TableOfContents extends Element {
     public void print() {
 
     }
