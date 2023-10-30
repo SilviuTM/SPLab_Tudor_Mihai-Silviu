@@ -6,32 +6,44 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ProiectSpApplication {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //SpringApplication.run(ProiectSpApplication.class, args);
 
-        Book noapteBuna = new Book("Noapte buna, copii!");
-        Author author = new Author("Radu Pavel Gheo");
-        noapteBuna.addAuthor(author);
+        long startTime = System.currentTimeMillis();
 
-        Section cap1 = new Section("Capitolul 1");
-        Section cap11 = new Section("Capitolul 1.1");
-        Section cap111 = new Section("Capitolul 1.1.1");
-        Section cap1111 = new Section("Subchapter 1.1.1.1");
+        Section s1 = new Section("Section 1");
+        Section s2 = new Section("Section 2");
 
-        cap1111.add(new Image("Image subchapter 1.1.1.1"));
+        ImageProxy i1 = new ImageProxy("image1");
+        ImageProxy i2 = new ImageProxy("image2");
+        ImageProxy i3 = new ImageProxy("image3");
+        ImageProxy i4 = new ImageProxy("image4");
 
-        cap111.add(new Paragraph("Text from subchapter 1.1.1"));
-        cap111.add(cap1111);
+        s1.add(i1);
+        s1.add(i3);
+        s1.add(i4);
 
-        cap11.add(new Paragraph("Text from subchapter 1.1"));
-        cap11.add(cap111);
+        s2.add(i2);
 
-        cap1.add(new Paragraph("Moto capitol"));
-        cap1.add(cap11);
+        Book b = new Book("Book");
 
-        noapteBuna.add(new Paragraph("Multumesc celor care ..."));
-        noapteBuna.add(cap1);
+        b.add(s1);
+        b.add(s2);
 
-        noapteBuna.print();
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Time taken: " + (endTime - startTime) + "ms");
+
+        startTime = System.currentTimeMillis();
+        s1.print();
+        endTime = System.currentTimeMillis();
+
+        System.out.println("Print time: " + (endTime - startTime) + "ms");
+
+        startTime = System.currentTimeMillis();
+        s1.print();
+        endTime = System.currentTimeMillis();
+
+        System.out.println("Reprint time: " + (endTime - startTime) + "ms");
     }
 }
