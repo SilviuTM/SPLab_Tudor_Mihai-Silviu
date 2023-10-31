@@ -2,6 +2,7 @@ package Books;
 
 public class Paragraph extends Element {
     String text;
+    AlignStrategy textAlignment;
 
     public Paragraph() {
         text = "";
@@ -14,6 +15,7 @@ public class Paragraph extends Element {
     public Paragraph(Paragraph other) {
         super(other);
         text = other.text;
+        textAlignment = other.textAlignment;
     }
 
     public String GetText() {
@@ -24,8 +26,15 @@ public class Paragraph extends Element {
         text = _text;
     }
 
+    public void setAlignStrategy(AlignStrategy as) {
+        textAlignment = as;
+    }
+
     public void print() {
-        System.out.println("Paragraph: " + text);
+        if (textAlignment != null)
+            textAlignment.render(this);
+        else
+            System.out.println(text);
     }
 
     public Paragraph clone() {

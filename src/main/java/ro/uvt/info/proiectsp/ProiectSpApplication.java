@@ -9,41 +9,37 @@ public class ProiectSpApplication {
     public static void main(String[] args) throws Exception {
         //SpringApplication.run(ProiectSpApplication.class, args);
 
-        long startTime = System.currentTimeMillis();
+        Section cap1 = new Section("Capitolul 1");
+        Paragraph p1 = new Paragraph("Paragraph 1");
+        cap1.add(p1);
 
-        Section s1 = new Section("Section 1");
-        Section s2 = new Section("Section 2");
+        Paragraph p2 = new Paragraph("Paragraph 2");
+        cap1.add(p2);
 
-        ImageProxy i1 = new ImageProxy("image1");
-        ImageProxy i2 = new ImageProxy("image2");
-        ImageProxy i3 = new ImageProxy("image3");
-        ImageProxy i4 = new ImageProxy("image4");
+        Paragraph p3 = new Paragraph("Paragraph 3");
+        cap1.add(p3);
 
-        s1.add(i1);
-        s1.add(i3);
-        s1.add(i4);
+        Paragraph p4 = new Paragraph("Paragraph 4");
+        cap1.add(p4);
 
-        s2.add(i2);
+        System.out.println("Printing without alignment:");
+        System.out.println();
+        cap1.print();
 
-        Book b = new Book("Book");
+        Section cap2 = new Section("Capitolul 2");
+        p1.setAlignStrategy(new AlignCenter());
+        p2.setAlignStrategy(new AlignRight());
+        p3.setAlignStrategy(new AlignLeft());
+        // no alignment for p4
 
-        b.add(s1);
-        b.add(s2);
+        cap2.add(p1);
+        cap2.add(p2);
+        cap2.add(p3);
+        cap2.add(p4);
 
-        long endTime = System.currentTimeMillis();
-
-        System.out.println("Time taken: " + (endTime - startTime) + "ms");
-
-        startTime = System.currentTimeMillis();
-        s1.print();
-        endTime = System.currentTimeMillis();
-
-        System.out.println("Print time: " + (endTime - startTime) + "ms");
-
-        startTime = System.currentTimeMillis();
-        s1.print();
-        endTime = System.currentTimeMillis();
-
-        System.out.println("Reprint time: " + (endTime - startTime) + "ms");
+        System.out.println("\n---------------------------\n");
+        System.out.println("Printing with alignment:");
+        System.out.println();
+        cap2.print();
     }
 }

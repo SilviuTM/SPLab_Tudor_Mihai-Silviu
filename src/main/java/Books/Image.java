@@ -3,7 +3,7 @@ package Books;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
-public class Image extends Element implements Picture {
+public class Image implements Picture {
     String imageName;
     Vector<Integer> dim;
     int[] content;
@@ -23,13 +23,6 @@ public class Image extends Element implements Picture {
         }
     }
 
-    public Image(Image other) {
-        super(other);
-        imageName = other.imageName;
-        dim = other.dim;
-        content = other.content;
-    }
-
     public String url() {
         return imageName;
     }
@@ -44,9 +37,5 @@ public class Image extends Element implements Picture {
 
     public void print() {
         System.out.println("Image: " + imageName);
-    }
-
-    public Image clone() {
-        return new Image(this);
     }
 }
