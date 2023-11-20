@@ -1,45 +1,54 @@
 package ro.uvt.info.proiectsp;
 
-import Books.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import ro.uvt.components.ClientComponent;
+import ro.uvt.components.SingletonComponent;
+import ro.uvt.components.TransientComponent;
 
-@SpringBootApplication
 public class ProiectSpApplication {
-    public static void main(String[] args) throws Exception {
-        //SpringApplication.run(ProiectSpApplication.class, args);
+    public static void main(String[] args) {
+        //
+        // Run this main function and inspect the output console
+        // to learn about
+        // the lifecycle of objects within
+        // Spring Dependency Injection Context
+        //
 
-        Section cap1 = new Section("Capitolul 1");
-        Paragraph p1 = new Paragraph("Paragraph 1");
-        cap1.add(p1);
+        // Gets a handle of dependency injection context
+        ApplicationContext context = SpringApplication.run(ProiectSpApplication.class, args);
 
-        Paragraph p2 = new Paragraph("Paragraph 2");
-        cap1.add(p2);
+        // Gets an instance of TransientComponent from the DI context
+        TransientComponent transientBean = context.getBean(TransientComponent.class);
+        transientBean.operation();
 
-        Paragraph p3 = new Paragraph("Paragraph 3");
-        cap1.add(p3);
+        // Note that every time an instance is required,
+        // the DI context creates a new one
+        transientBean = context.getBean(TransientComponent.class);
+        transientBean.operation();
 
-        Paragraph p4 = new Paragraph("Paragraph 4");
-        cap1.add(p4);
+        // Gets an instance of SingletonComponent from the DI context
+        // Note that the unique instance was created while
+        // application was loaded, before creating
+        // the transient instances
+        SingletonComponent singletonBean = context.getBean(SingletonComponent.class);
+        singletonBean.operation();
 
-        System.out.println("Printing without alignment:");
-        System.out.println();
-        cap1.print();
+        // Note that every time an instance is required,
+        // the DI returns the same unique one
+        singletonBean = context.getBean(SingletonComponent.class);
+        singletonBean.operation();
 
-        Section cap2 = new Section("Capitolul 2");
-        p1.setAlignStrategy(new AlignCenter());
-        p2.setAlignStrategy(new AlignRight());
-        p3.setAlignStrategy(new AlignLeft());
-        // no alignment for p4
+        // Gets an instance of another class that
+        // requires singleton/transient components
+        // Note where this instance was created and what beans
+        // were used to initialize it
+        ClientComponent c = context.getBean(ClientComponent.class);
+        c.operation();
 
-        cap2.add(p1);
-        cap2.add(p2);
-        cap2.add(p3);
-        cap2.add(p4);
-
-        System.out.println("\n---------------------------\n");
-        System.out.println("Printing with alignment:");
-        System.out.println();
-        cap2.print();
+        // One can also request an instance from DI context by name
+        c = (ClientComponent)context.getBean("clientComponent");
+        c.operation();
     }
 }
