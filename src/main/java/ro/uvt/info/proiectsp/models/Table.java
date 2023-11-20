@@ -1,4 +1,4 @@
-package Books;
+package ro.uvt.info.proiectsp.models;
 
 public class Table extends Element {
     String title;

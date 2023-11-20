@@ -1,6 +1,7 @@
 package ro.uvt.info.proiectsp;
 
-import Books.*;
+import ro.uvt.info.proiectsp.models.*;
+import ro.uvt.info.proiectsp.services.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

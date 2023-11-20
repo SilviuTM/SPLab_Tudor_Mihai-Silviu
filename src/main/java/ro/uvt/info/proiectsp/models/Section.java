@@ -1,4 +1,4 @@
-package Books;
+package ro.uvt.info.proiectsp.models;
 
 public class Section extends Element {
     String title;

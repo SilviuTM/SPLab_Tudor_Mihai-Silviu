@@ -1,4 +1,6 @@
-package Books;
+package ro.uvt.info.proiectsp.models;
+
+import ro.uvt.info.proiectsp.services.*;
 
 public class Paragraph extends Element {
     String text;
