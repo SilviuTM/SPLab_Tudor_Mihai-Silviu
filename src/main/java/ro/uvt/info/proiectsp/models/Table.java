@@ -1,6 +1,6 @@
 package ro.uvt.info.proiectsp.models;
 
-public class Table extends Element {
+public class Table extends Element implements Visitee {
     String title;
 
     public Table() {
@@ -24,11 +24,11 @@ public class Table extends Element {
         title = _title;
     }
 
-    public void print() {
-        System.out.println("Table: " + title);
-    }
-
     public Table clone() {
         return new Table(this);
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visitTable(this);
     }
 }

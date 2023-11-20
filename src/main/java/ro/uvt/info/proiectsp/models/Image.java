@@ -3,7 +3,7 @@ package ro.uvt.info.proiectsp.models;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Picture {
+public class Image extends Element implements Picture, Visitee {
     String imageName;
     Vector<Integer> dim;
     int[] content;
@@ -23,6 +23,12 @@ public class Image implements Picture {
         }
     }
 
+    public Image(Image other) {
+        imageName = other.imageName;
+        dim = other.dim;
+        content = other.content;
+    }
+
     public String url() {
         return imageName;
     }
@@ -35,7 +41,13 @@ public class Image implements Picture {
         return content;
     }
 
-    public void print() {
-        System.out.println("Image: " + imageName);
+    public String getImageName() { return imageName; }
+
+    public Image clone() {
+        return new Image(this);
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 }

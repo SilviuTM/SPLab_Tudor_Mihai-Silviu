@@ -2,7 +2,7 @@ package ro.uvt.info.proiectsp.models;
 
 import ro.uvt.info.proiectsp.services.*;
 
-public class Paragraph extends Element {
+public class Paragraph extends Element implements Visitee {
     String text;
     AlignStrategy textAlignment;
 
@@ -24,6 +24,8 @@ public class Paragraph extends Element {
         return text;
     }
 
+    public AlignStrategy getTextAlignment() { return textAlignment; }
+
     public void SetText(String _text) {
         text = _text;
     }
@@ -32,14 +34,11 @@ public class Paragraph extends Element {
         textAlignment = as;
     }
 
-    public void print() {
-        if (textAlignment != null)
-            textAlignment.render(this);
-        else
-            System.out.println(text);
-    }
-
     public Paragraph clone() {
         return new Paragraph(this);
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
     }
 }

@@ -2,7 +2,7 @@ package ro.uvt.info.proiectsp.models;
 
 import java.util.Vector;
 
-public class ImageProxy extends Element implements Picture {
+public class ImageProxy extends Element implements Picture, Visitee {
     String imageName;
     Vector<Integer> dim;
     int[] content;
@@ -40,12 +40,15 @@ public class ImageProxy extends Element implements Picture {
         return realImg;
     }
 
-    public void print() {
-        loadContent();
-        realImg.print();
+    public String getImageName() {
+        return imageName;
     }
 
     public ImageProxy clone() {
         return new ImageProxy(this);
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 }

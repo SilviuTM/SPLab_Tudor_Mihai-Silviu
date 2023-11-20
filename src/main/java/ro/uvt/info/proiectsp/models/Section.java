@@ -1,6 +1,6 @@
 package ro.uvt.info.proiectsp.models;
 
-public class Section extends Element {
+public class Section extends Element implements Visitee {
     String title;
 
     public Section() {
@@ -26,13 +26,6 @@ public class Section extends Element {
         title = _title;
     }
 
-    public void print() {
-        System.out.println(title);
-        for (Element e : elements) {
-            e.print();
-        }
-    }
-
     public void add(Element e) {
         elements.add(e.clone());
     }
@@ -45,5 +38,9 @@ public class Section extends Element {
 
     public Section clone() {
         return new Section(this);
+    }
+
+    public void accept(Visitor visitor) {
+        visitor.visitSection(this);
     }
 }

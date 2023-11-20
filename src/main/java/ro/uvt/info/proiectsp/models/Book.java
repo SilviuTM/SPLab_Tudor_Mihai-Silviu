@@ -28,14 +28,7 @@ public class Book extends Section {
         authorList.add(newAuth);
     }
 
-    public void print() {
-        System.out.println("Book:" + title);
-        System.out.println();
-        System.out.println("Authors: ");
-
-        for (Author a : authorList) a.print();
-        System.out.println();
-
-        for (Element e : elements) e.print();
+    public void accept(Visitor visitor) {
+        visitor.visitBook(this);
     }
 }
