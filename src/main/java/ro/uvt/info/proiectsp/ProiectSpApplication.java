@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ProiectSpApplication {
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(ProiectSpApplication.class, args);
+        //SpringApplication.run(ProiectSpApplication.class, args);
 
         Book b = new Book("The book");
         Section cap1 = new Section("Chapter 1");
