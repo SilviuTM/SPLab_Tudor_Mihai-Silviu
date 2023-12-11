@@ -1,20 +1,14 @@
 package ro.uvt.info.proiectsp.services;
 
-public class DeleteBookCommand implements Command<Void> {
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import ro.uvt.info.proiectsp.models.Book;
 
-    BookService context;
-    Long id;
+@RequiredArgsConstructor
+public class DeleteBookCommand implements Command {
+    private final Long id;
 
-    public DeleteBookCommand(BookService _context) {
-        context = _context;
-    }
-
-    public Void execute() {
-        context.deleteBook(id);
-        return null;
-    }
-
-    public void SetArgs(Long _id) {
-        id = _id;
+    public void execute(CommandContext context) {
+        context.getBookRepository().deleteBook(id);
     }
 }

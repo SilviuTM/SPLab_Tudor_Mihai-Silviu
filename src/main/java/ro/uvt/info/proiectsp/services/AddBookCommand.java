@@ -1,20 +1,20 @@
 package ro.uvt.info.proiectsp.services;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import ro.uvt.info.proiectsp.models.Book;
 
-public class AddBookCommand implements Command<Book> {
-    BookService context;
-    Book newBook;
+import java.util.Map;
 
-    public AddBookCommand(BookService _context) {
-        context = _context;
-    }
+@RequiredArgsConstructor
+public class AddBookCommand implements Command {
+    @Getter
+    Book newBook = null;
 
-    public Book execute() {
-        return context.createBook(newBook);
-    }
+    private final Map<String, Object> request;
 
-    public void SetArgs(Book _newBook) {
-        newBook = _newBook;
+    @Override
+    public void execute(CommandContext context) {
+        newBook = context.getBookRepository().createBook(newBook);
     }
 }
