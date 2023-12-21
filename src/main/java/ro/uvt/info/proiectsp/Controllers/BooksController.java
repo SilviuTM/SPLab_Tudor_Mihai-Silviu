@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.uvt.info.proiectsp.models.*;
+import ro.uvt.info.proiectsp.ACTUALmodels.*;
 import ro.uvt.info.proiectsp.services.*;
 
 import java.util.List;

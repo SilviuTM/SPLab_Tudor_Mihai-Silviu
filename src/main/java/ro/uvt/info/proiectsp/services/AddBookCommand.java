@@ -2,7 +2,7 @@ package ro.uvt.info.proiectsp.services;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import ro.uvt.info.proiectsp.models.Book;
+import ro.uvt.info.proiectsp.ACTUALmodels.Book;
 
 import java.util.Map;
 
@@ -15,6 +15,9 @@ public class AddBookCommand implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        newBook = context.getBookRepository().createBook(newBook);
+        newBook = new Book();
+        newBook.setTitle((String) request.get("titlu"));
+
+        context.getBookRepository().save(newBook);
     }
 }

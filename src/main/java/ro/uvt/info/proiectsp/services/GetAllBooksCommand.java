@@ -1,8 +1,7 @@
 package ro.uvt.info.proiectsp.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import ro.uvt.info.proiectsp.models.Book;
+import ro.uvt.info.proiectsp.ACTUALmodels.Book;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,7 @@ public class GetAllBooksCommand implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        result = context.getBookRepository().getBooks();
+        result = context.getBookRepository().findAll();
     }
 
     public List<Book> getResults() {

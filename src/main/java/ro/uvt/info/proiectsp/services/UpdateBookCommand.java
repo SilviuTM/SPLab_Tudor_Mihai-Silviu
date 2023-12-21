@@ -2,8 +2,7 @@ package ro.uvt.info.proiectsp.services;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import ro.uvt.info.proiectsp.models.Book;
-import java.util.List;
+import ro.uvt.info.proiectsp.ACTUALmodels.Book;
 
 @RequiredArgsConstructor
 public class UpdateBookCommand implements Command {
@@ -15,6 +14,8 @@ public class UpdateBookCommand implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        book = context.getBookRepository().createBook(_book);
+        book = context.getBookRepository().getReferenceById(id);
+        book = _book;
+        book = context.getBookRepository().save(book);
     }
 }

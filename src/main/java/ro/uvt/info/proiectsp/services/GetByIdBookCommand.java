@@ -1,9 +1,7 @@
 package ro.uvt.info.proiectsp.services;
 
 import lombok.RequiredArgsConstructor;
-import ro.uvt.info.proiectsp.models.Book;
-
-import java.util.List;
+import ro.uvt.info.proiectsp.ACTUALmodels.Book;
 
 @RequiredArgsConstructor
 public class GetByIdBookCommand implements Command {
@@ -12,7 +10,7 @@ public class GetByIdBookCommand implements Command {
     Book result = null;
 
     public void execute(CommandContext context) {
-        result = context.getBookRepository().getBookById(id);
+        result = context.getBookRepository().getReferenceById(id);
     }
 
     public Book getResultBook() {
