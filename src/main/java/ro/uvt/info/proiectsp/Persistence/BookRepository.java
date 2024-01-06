@@ -6,5 +6,4 @@ import ro.uvt.info.proiectsp.ACTUALmodels.Book;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-
 }

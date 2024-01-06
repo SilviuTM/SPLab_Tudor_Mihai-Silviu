@@ -10,7 +10,7 @@ public class GetByIdBookCommand implements Command {
     Book result = null;
 
     public void execute(CommandContext context) {
-        result = context.getBookRepository().getReferenceById(id);
+        result = context.getBookCrudRepositoryAdapter().findById(id).get();
     }
 
     public Book getResultBook() {

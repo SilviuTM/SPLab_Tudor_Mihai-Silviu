@@ -14,8 +14,8 @@ public class UpdateBookCommand implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        book = context.getBookRepository().getReferenceById(id);
+        book = context.getBookCrudRepositoryAdapter().findById(id).get();
         book = _book;
-        book = context.getBookRepository().save(book);
+        book = context.getBookCrudRepositoryAdapter().save(book);
     }
 }

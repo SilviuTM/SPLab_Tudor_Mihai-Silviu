@@ -18,6 +18,6 @@ public class AddBookCommand implements Command {
         newBook = new Book();
         newBook.setTitle((String) request.get("titlu"));
 
-        context.getBookRepository().save(newBook);
+        context.getBookCrudRepositoryAdapter().save(newBook);
     }
 }

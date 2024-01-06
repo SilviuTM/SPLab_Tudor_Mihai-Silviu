@@ -7,6 +7,6 @@ public class DeleteBookCommand implements Command {
     private final Long id;
 
     public void execute(CommandContext context) {
-        context.getBookRepository().deleteById(id);
+        context.getBookCrudRepositoryAdapter().deleteById(id);
     }
 }

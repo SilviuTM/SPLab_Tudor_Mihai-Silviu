@@ -12,7 +12,7 @@ public class GetAllBooksCommand implements Command {
 
     @Override
     public void execute(CommandContext context) {
-        result = context.getBookRepository().findAll();
+        result = context.getBookCrudRepositoryAdapter().findAll();
     }
 
     public List<Book> getResults() {
