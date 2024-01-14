@@ -22,6 +22,8 @@ public class BooksController {
 
     private final SynchronousExecutorService synchronousExecutorService;
 
+    private final AllBooksSubject allBooksSubject;
+
     @GetMapping
     public ResponseEntity<?> getAllBooks() {
         GetAllBooksCommand cmd = new GetAllBooksCommand();
@@ -37,10 +39,13 @@ public class BooksController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addBook(@RequestBody Map<String, Object> request) {
+    public String addBook(@RequestBody Map<String, Object> request) {
         AddBookCommand cmd = new AddBookCommand(request);
         asynchronousExecutorService.executeCommand(cmd, context);
-        return new ResponseEntity<>(cmd.getNewBook(), HttpStatus.OK);
+
+        Book book = cmd.getResultBook();
+        allBooksSubject.notifyObservers(book);
+        return "Book saved [" + book.getTitle() + "] ";
     }
 
     @PutMapping("/{id}")
